@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+
+        .container{
+            width: 600px;
+            height:300px ;
+            border: 5px solid black;
+            background: rgb(173, 151, 151);
+            
+            margin-left: 300px;
+        }
+
+        .tittle{
+            
+            background: rgb(230, 221, 221);
+            height: 400px;
+            text-align: center;
+
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+     <div class="tittle"><h1>Dictionary</h1><br>
+        <form action="/" method="get">
+            <input type="text" name="word" id="word">
+            <input type="submit" value="Search">
+        </form>
+        {% if search_result %}
+        <hr>
+        {% if search_result.success %}
+          {% for result in search_result.results %}
+            <h3>{{ result.word }}</h3>
+            {% for lexicalentry in result.lexicalEntries %}
+              <h4>{{ lexicalentry.lexicalCategory }}</h4>
+              <ul>
+                {% for entry in lexicalentry.entries %}
+                  {% for sense in entry.senses %}
+                    {% for definition in sense.definitions %}
+                      <li>{{ definition }}</li>
+                    {% endfor %}
+                  {% endfor %}
+                {% endfor %}
+              </ul>
+            {% endfor %}
+          {% endfor %}
+        {% else %}
+          <p><em>{{ search_result.message }}</em></p>
+        {% endif %}
+      {% endif %}
+    
+    </div>
+   
+
+
+    
+  
+  
+</body>
+</html>
