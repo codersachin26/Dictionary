@@ -7,7 +7,7 @@ English dictionary website using OxfordDictionary API
 
 ![alt text](https://github.com/codersachin26/Dictionary/blob/master/oxfordapi.jpg?raw=true)
 
-## you need to install two module 
+## for this website you need to install two module 
 ### run this command
 * pip install requests
 * pip install django
